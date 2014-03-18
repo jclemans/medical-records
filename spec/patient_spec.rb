@@ -1,14 +1,5 @@
-require 'rspec'
-require 'pg'
 require 'patient'
-
-DB = PG.connect({:dbname => 'medical_records_test'})
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM patients *;")
-  end
-end
+require 'spec_helper'
 
 describe Patient do
   describe 'initialize' do
@@ -35,7 +26,7 @@ describe Patient do
     it 'sets its ID when you save it' do
       test_patient = Patient.new('Rust Cole', '1975-05-23', 1)
       test_patient.save
-      test_patient.id.should be_an_instance_of Fixnum
+      test_patient.p_id.should be_an_instance_of Fixnum
     end
   end
   describe '==(another_patient)' do
@@ -45,6 +36,7 @@ describe Patient do
       patient_1.should eq patient_2
     end
   end
+
 end
 
 

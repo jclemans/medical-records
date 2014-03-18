@@ -2,11 +2,12 @@ require 'pg'
 require 'pry'
 
 class Doctor
-  attr_reader :name, :specialty, :id
+  attr_reader :name, :specialty, :id, :specialty_id
 
   def initialize(name, specialty)
     @name = name
     @specialty = specialty
+    @specialty_id  = specialty_id
   end
 
   def self.all
